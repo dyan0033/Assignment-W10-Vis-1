@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/per-capita-alcohol-1890.csv"
+  },
+  "transform": [
+    {"filter": "Entity_selection == null || datum.Entity == Entity_selection"},
+    {"filter": "datum.Year >= 1960"},
+    {"filter": "datum.Entity != 'Austria'"},
+    {"filter": "datum.Entity != 'Sweden'"},
+    {"filter": "datum.Entity != 'France'"},
+    {"filter": "datum.Entity != 'United Kingdom'"},
+    {"filter": "datum.Entity != 'Germany'"},
+    {"filter": "datum.Entity != 'Netherlands'"},
+    {"filter": "datum.Entity != 'New Zealand'"},
+    {"filter": "datum.Entity != 'Finland'"},
+    {"filter": "datum.Entity != 'Italy'"}
+  ],
+  "params": [
+    {
+      "name": "Entity_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Australia",
+          "Belgium",
+          "Canada",
+          "Denmark",
+          "Japan",
+          "Norway",
+          "Switzerland",
+          "United States"
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "Belgium",
+          "Canada",
+          "Denmark",
+          "Japan",
+          "Norway",
+          "Switzerland",
+          "United States"
+        ],
+        "name": "Entity Selection: "
+      }
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal", "title": "Year"},
+    "y": {
+      "field": "Alcohol consumption",
+      "type": "quantitative",
+      "title": "Alcohol consumption (Litre)",
+      "scale": {"domain": [5, 13]}
+    },
+    "color": {
+      "condition": {
+        "param": "hover",
+        "field": "Entity",
+        "type": "nominal",
+        "legend": null
+      },
+      "value": "grey"
+    },
+    "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.2}
+  },
+  "layer": [
+    {
+      "description": "transparent layer to make it easier to trigger selection",
+      "params": [
+        {
+          "name": "hover",
+          "value": [{"Entity": "Australia"}],
+          "select": {"type": "point", "fields": ["Entity"], "on": "mouseover"}
+        }
+      ],
+      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
+    },
+    {"mark": "line"},
+    {
+      "encoding": {
+        "x": {"aggregate": "max", "field": "Year"},
+        "y": {"aggregate": {"argmax": "Year"}, "field": "Alcohol consumption"}
+      },
+      "layer": [
+        {"mark": {"type": "circle"}},
+        {
+          "mark": {"type": "text", "align": "left", "dx": 4},
+          "encoding": {"text": {"field": "Entity", "type": "nominal"}}
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Italy' || datum['Country'] == 'Yemen' ||  datum['Country'] == 'United States'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Entity", "type": "nominal"},
+          {"field": "Year", "type": "temporal"},
+          {
+            "field": "Alcohol consumption",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
