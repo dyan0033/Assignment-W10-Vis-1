@@ -1,4 +1,4 @@
-Entity,Code,Year,"Indicator:Alcohol, consumers past 12 months (%) - Sex:Male","Indicator:Alcohol, consumers past 12 months (%) - Sex:Female",Population (historical estimates)
+Entity,Code,Year,Male,Female,Population
 Afghanistan,AFG,2016,1,0.3,34636212
 Albania,ALB,2016,65,37.6,2881064
 Algeria,DZA,2016,4.8,1.5,40339328
