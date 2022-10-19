@@ -1,0 +1,103 @@
+Entity,Code,Year,Alcohol consumption,Trend
+Australia,AUS,1960,7.1,Increasing
+Australia,AUS,1970,9.5,Increasing
+Australia,AUS,1980,9.7,Increasing
+Australia,AUS,1990,8.1,Increasing
+Australia,AUS,2000,8.1,Increasing
+Australia,AUS,2014,7.3,Increasing
+Austria,AUT,1960,8.7,Increasing
+Austria,AUT,1970,10.8,Increasing
+Austria,AUT,1980,11.1,Increasing
+Austria,AUT,1990,11,Increasing
+Austria,AUT,2000,10.3,Increasing
+Austria,AUT,2014,10.4,Increasing
+Belgium,BEL,1960,8.9,Increasing
+Belgium,BEL,1970,11.3,Increasing
+Belgium,BEL,1980,11.5,Increasing
+Belgium,BEL,1990,9.9,Increasing
+Belgium,BEL,2000,10,Increasing
+Belgium,BEL,2014,9.6,Increasing
+Canada,CAN,1960,5.1,Increasing
+Canada,CAN,1970,7.5,Increasing
+Canada,CAN,1980,7.6,Increasing
+Canada,CAN,1990,6.1,Increasing
+Canada,CAN,2000,6.5,Increasing
+Canada,CAN,2014,6.7,Increasing
+Denmark,DNK,1960,5.6,Increasing
+Denmark,DNK,1970,8.3,Increasing
+Denmark,DNK,1980,9.8,Increasing
+Denmark,DNK,1990,9.9,Increasing
+Denmark,DNK,2000,9.1,Increasing
+Denmark,DNK,2014,8,Increasing
+Finland,FIN,1960,1.9,Increasing
+Finland,FIN,1970,4.3,Increasing
+Finland,FIN,1980,5.1,Increasing
+Finland,FIN,1990,5.9,Increasing
+Finland,FIN,2000,7,Increasing
+Finland,FIN,2014,6.9,Increasing
+France,FRA,1960,17.7,Decreasing
+France,FRA,1970,15.9,Decreasing
+France,FRA,1980,13.3,Decreasing
+France,FRA,1990,11.2,Decreasing
+France,FRA,2000,10.3,Decreasing
+France,FRA,2014,9.2,Decreasing
+Germany,DEU,1960,10.3,Decreasing
+Germany,DEU,1970,12.9,Decreasing
+Germany,DEU,1980,12.7,Decreasing
+Germany,DEU,1990,11.3,Decreasing
+Germany,DEU,2000,10.2,Decreasing
+Germany,DEU,2014,9.6,Decreasing
+Italy,ITA,1960,14.3,Decreasing
+Italy,ITA,1970,14,Decreasing
+Italy,ITA,1980,10.8,Decreasing
+Italy,ITA,1990,8.4,Decreasing
+Italy,ITA,2000,7.5,Decreasing
+Italy,ITA,2014,6.1,Decreasing
+Japan,JPN,1960,4.3,Increasing
+Japan,JPN,1970,5.6,Increasing
+Japan,JPN,1980,6.5,Increasing
+Japan,JPN,1990,7.2,Increasing
+Japan,JPN,2000,5.8,Increasing
+Japan,JPN,2014,5.6,Increasing
+Netherlands,NLD,1960,3.8,Increasing
+Netherlands,NLD,1970,7.5,Increasing
+Netherlands,NLD,1980,8.6,Increasing
+Netherlands,NLD,1990,8.1,Increasing
+Netherlands,NLD,2000,7.9,Increasing
+Netherlands,NLD,2014,7.4,Increasing
+New Zealand,NZL,1960,6.7,Decreasing
+New Zealand,NZL,1970,8.9,Decreasing
+New Zealand,NZL,1980,9.1,Decreasing
+New Zealand,NZL,1990,7.6,Decreasing
+New Zealand,NZL,2000,6.5,Decreasing
+New Zealand,NZL,2014,6.4,Decreasing
+Norway,NOR,1960,4,Increasing
+Norway,NOR,1970,5.5,Increasing
+Norway,NOR,1980,5.2,Increasing
+Norway,NOR,1990,5,Increasing
+Norway,NOR,2000,6.2,Increasing
+Norway,NOR,2014,6.3,Increasing
+Sweden,SWE,1960,5.2,Increasing
+Sweden,SWE,1970,6.5,Increasing
+Sweden,SWE,1980,5.9,Increasing
+Sweden,SWE,1990,5.9,Increasing
+Sweden,SWE,2000,5.5,Increasing
+Sweden,SWE,2014,6.1,Increasing
+Switzerland,CHE,1960,10.3,Decreasing
+Switzerland,CHE,1970,11,Decreasing
+Switzerland,CHE,1980,11.4,Decreasing
+Switzerland,CHE,1990,9.6,Decreasing
+Switzerland,CHE,2000,8.7,Decreasing
+Switzerland,CHE,2014,8.3,Decreasing
+United Kingdom,GBR,1960,5.7,Increasing
+United Kingdom,GBR,1970,7.7,Increasing
+United Kingdom,GBR,1980,8,Increasing
+United Kingdom,GBR,1990,7.5,Increasing
+United Kingdom,GBR,2000,8.8,Increasing
+United Kingdom,GBR,2014,8,Increasing
+United States,USA,1960,5.8,Increasing
+United States,USA,1970,7.4,Increasing
+United States,USA,1980,7.7,Increasing
+United States,USA,1990,6.5,Increasing
+United States,USA,2000,6.7,Increasing
+United States,USA,2014,7,Increasing
