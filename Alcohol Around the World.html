@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Multiple Visualisations | An Example</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.2.0/build/pure-min.css" integrity="sha384-7UE2/aLxcikvluV1XGghN2k6i+LoAwMjrZb4oVT9gGPPcLd2sjqAtgIinHb11RJz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.2.0/build/grids-responsive-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    
+    <!-- style -->
+    <link href="https://fonts.googleapis.com/css?family=Ultra|Alfa+Slab+One|Merriweather:400,400i|Source+Serif+Pro:400,700" rel="stylesheet">
+
+
+    <style>
+        .page{
+          width: 1100px; 
+          margin: auto; 
+          padding: 50px;
+          padding-top: 30px;
+          
+        }
+
+        hr{
+          border-top: 1px solid rgb(0, 0, 0);
+        }
+
+        hr.sep{
+          border: 1px solid
+        }
+
+        b{
+          color: rgb(187, 87, 0);
+        }
+
+        h1{
+          font-size: 70px; 
+          color: black; 
+          font-family: 'Alfa Slab One', serif;
+          font-weight: bold;
+          text-align: center;
+          display: block;
+          margin-block-start: 0.67em;
+          margin-block-end: 0.3em;
+          margin-inline-start: 0px;
+        }
+
+        h2.title-desc{
+          font-family: 'Merriweather', serif;
+          font-size: 18px; 
+          color: black; 
+          font-weight: bold;
+          letter-spacing: -.05em;
+          text-align: center;
+          padding-bottom: 10px;
+
+        }
+
+        h2{
+          font-size: 20px;
+          text-transform: uppercase;
+          line-height: 1.25;
+
+          font-family: Georgia, Times, "Times New Roman", serif;
+          color: rgb(0, 0, 0); 
+          padding-top: 2px;
+          margin-top: 5px;
+          margin-bottom: 5px; 
+          font-weight: bold;
+          font-style: normal; 
+          font-variant: normal; 
+
+            
+        }
+
+        hr.title {
+        border: 2px solid
+      }
+
+        p{
+          text-align: justify;
+          font-family: Georgia, serif;
+          font-size: 14px;
+          margin-top: 5px;
+          margin-bottom: 5px; 
+          line-height: 20pt;
+        }
+
+        /* Section 1 */
+
+        .section-1 {
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: 50px auto;
+        }
+          
+        .title-sub-div{
+          display: grid;
+          grid-template-columns: 48px auto;
+          margin: 0px; 
+        }
+
+
+        .subtitle{
+          grid-column: 2;
+        }
+
+        .line-chart-title {
+          grid-column: 1;
+          grid-row: 1;
+          padding-right: 15px;
+        }
+
+        .line-chart{
+          grid-column: 1;
+          grid-row: 2;
+          padding-right: 15px;
+          padding-top: 40px;
+        }
+
+        .line-chart-text {
+          grid-column: 1;
+          grid-row: 3;
+          padding-right: 15px;
+          
+        }
+
+        .area-chart-title {
+          
+          grid-column: 2;
+          grid-row: 1;
+        }
+
+        .area-chart {
+          padding-left: 30px;
+          padding-top: 40px;
+          grid-column: 2;
+          grid-row: 2;
+        }
+
+        .area-chart-text {
+          grid-column: 2;
+          grid-row: 3;
+          padding-left: 15px;
+        }
+        
+        /* Section 2 */
+
+        .section-2 {
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: 50px auto;
+        }
+
+        .bubble-chart-title {
+          grid-column: 2;
+          grid-row: 1;
+        }
+
+        .bubble-chart {
+          grid-column: 1;
+          grid-row: 1;
+          padding-right: 50px;
+        }
+
+        .bubble-chart-text {
+          grid-column: 2;
+          grid-row: 3;
+          padding-top: 40px;
+        }
+
+        /* Section 3 */
+
+        .map_container{
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .map-title{
+          grid-column: 1;
+          text-align: center;
+
+        }
+
+        .line_container{
+          display: grid;
+          
+        }
+
+        .map-text{
+          grid-column: 1;
+          grid-row: 1;
+
+        }
+
+        .line-chart2{
+          grid-column: 2;
+          grid-row: 1;
+
+        }
+
+
+        /* Section 4*/
+
+        .section-4{
+          
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: 50px auto;
+        }
+
+        .crash-title {
+          text-align: center;
+          grid-column: 1;
+          grid-row: 1;
+          padding-left: 15px;
+        }
+
+        .bar-chart-title {
+        padding-top: 30px;
+        grid-column: 2;
+        grid-row: 1;
+        padding-left: 15px;
+        }
+
+        .bar-chart {
+
+          grid-column: 1;
+          grid-row: 2;
+          padding-right: 15px;
+        }
+
+        .bar-chart-text {
+          padding-top: 70px;
+          grid-column: 2;
+          grid-row: 2;
+          padding-left: 15px;
+        }
+
+    
+
+        /* Section 5*/
+
+         .section-5{
+          padding-top: 30px;
+          padding-bottom: 50px;
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: 50px auto;
+          
+        }
+        .heatmap-title {
+          grid-column: 1;
+          grid-row: 1;
+          padding-right: 15px;
+        }
+
+        .heatmap {
+          grid-column: 2;
+          grid-row: 1;
+          padding-left: 15px;
+        }
+
+        .heatmap-text {
+          padding-top: 50px;
+          grid-column: 1;
+          grid-row: 2;
+          padding-right: 15px;
+        }
+
+        /* Section 6*/
+
+        .section-6{
+          padding-top: 30px;
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: 50px auto;
+          
+        }
+
+        .pie-chart-title {
+          padding-left: 15px; 
+          grid-column: 2;
+          grid-row: 1;
+        }
+
+        .pie-chart {
+          padding-right: 15px; 
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        .pie-chart-text {
+          padding-top: 30px;
+          padding-left: 15px; 
+          grid-column: 2;
+          grid-row: 2;
+        }
+
+        .crash-container {
+          padding-top: 40px;
+          grid-column: 2;
+          grid-row: 2;
+        }
+
+
+
+
+        
+
+        
+
+
+
+
+    </style>
+ 
+  
+  </head>
+
+  <body>
+    <div class="page">
+      <h1>Alcohol Around the World</h1>
+      <div class="title-desc">
+        <h2 class="title-desc">Alcohol is a well-known and widely consumed beverage all throughout the world. How does it affect the entire world?</h3>
+      </div>
+
+      <hr class="sep">
+      
+      <!-- section 1 -->
+      <div class="section-1">
+        <div class="line-chart-title">
+          <div class="title-sub-div">
+            
+            <div class="subtitle">
+              <h2>Alcohol consumption per capita in the long run</h2>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="line-chart"> 
+          <div id="vis2"></div>
+          <br>
+        </div>
+
+        <div class="line-chart-text">
+          <p>
+            The graph above depicts the average per capita pure alcohol consumption per person from 1960 to 2014, measured in litres. 
+            Several countries saw a growing tendency over the studied years, demonstrating that alcohol is still a popular beverage around the world. 
+            Austria had the highest average alcohol consumption in 2014 with <b>10.4 litres</b>, while Japan had the lowest with <b>5.6 litres</b>, 
+            according to the data that was examined. </p>
+        </div>
+        <div class="area-chart-title">
+          <div class="title-sub-div">
+
+            <div class="subtitle">
+              <h2>Type of alcoholic beverage consumed in the U. S., 1850-2013</h2>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="area-chart">
+          <div id="vis1"></div>
+        </div>
+        <div class="area-chart-text">
+          <p>Overall, the highest consumption from 1850 to 2013 is <b>beer</b>. 
+            In 1850, beer had not become popular yet, Spirits were more popular. 
+            As the year increased,<b>beer</b> became more popular (<b>45.2%</b>) in 1890 than <b>Spirits (47.7%)</b>. 
+            It is assumed that there was <b>zero consumption</b> of alcohol from <b>1920 to 1933</b> because there was <b>a ban on alcohol production</b> which was known as ‘National Alcohol Prohibition’. 
+            <b>Wine</b> has the <b>smallest</b> proportion throughout the years because of its expensive price compared to other alcoholic beverages. </p>
+        </div>
+      </div>
+      <!-- end section 1 -->
+
+      <br>
+      <hr class="sep">
+      <br>
+      
+      <!-- section 2 -->
+      <div class="section-2">
+        <div class="bubble-chart"> 
+          <div id="bubble"></div>
+        </div>
+
+
+          <div class="subtitle">
+            <h2>Share of Men vs Share of Female who Drank Alcohol, 2016</h2>
+            <hr>
+          </div>
+
+        <br> 
+
+        <div class="bubble-chart-text">
+          <p>
+            There is a likelihood that there is <b>more share of male </b>that consumed alcohol than female in 2016 throughout the analysed countries. 
+            When the bubble chart is filtered by continents (click the continent legend), the majority of <b>European</b> countries have <b>large percentages</b> of male and females who drank alcohol.
+ </p>
+        </div>
+
+      </div>
+      <!-- end section 2 -->
+
+      <br>
+      <br> 
+      <hr class="sep">
+      <br> 
+    
+
+      <!-- section 3 -->
+      
+
+        <div class="map-title">
+          <h2>Rate of premature deaths due to alcohol, 2016</h2>
+          <br> 
+        </div>
+
+        <hr>
+        <br>
+
+      <div id="map" , class="map_container"></div>
+
+        <div class="map-text"> 
+          <p>
+            Alcohol contributes to <b>2.8 million</b> premature deaths per year. 
+            There are more than 200 medical conditions, including injuries and diseases brought on by alcohol. 
+            The majority of countries with four different seasons have a higher number of premature deaths due to alcohol, including <b>Russia</b>, which has<b> 77 </b>premature deaths. 
+            However, <b>Uganda and Gabon</b>, which are on the equator and do not have four seasons, have a high number of premature deaths, <b>96 and 81</b>, respectively. 
+            This indicates that both nations have other factors, such as strong alcohol consumption cultures, that contribute to their high number of premature mortality from alcohol use. 
+            The governments from every nation must examine these situations in order to stop additional premature deaths.
+          </p>
+ 
+
+
+      </div>
+      <br>
+      <hr>
+      <hr>
+
+      <!-- end section 3 -->
+
+      <!-- section 4 -->
+
+      <div class="crash-title">
+        <h2>Relationship between Alcohol and Traffic Accident</h2>
+        <hr>
+          
+      </div>
+      
+      <div class="section-4">
+
+        <div class="bar-chart"> 
+          <div id="bar"></div>
+        </div>
+
+        <div class="bar-chart-title">
+          <h2>Total Traffic And Alcohol-Impaired Crash Fatalities in the U.S., 1985-2020</h2>
+          <hr>
+            
+        </div>
+
+        
+        
+        <div class="bar-chart-text">
+          <p>
+            Consumption of alcohol also impacts the traffic-accident in the United States. 
+            Alcohol-impared traffic means the driver has a blood alcohol concentration level more than<b> 0.08 grams</b> (legal definition of impaired driving in most states). 
+            <b>Over one-third</b> of the total crash fatalities were caused by alcohol. 
+            Although there were fewer fatal crashes overall between 1985 and 2011, there is <b>an upward trend</b> for the remaining years.
+            
+          </p>
+      </div>
+    </div>
+
+      <div class="section-5">
+
+
+      <div class="heatmap-title">
+        <h2>Percentage of fatal accident with drinking drivers, by day and time of occurrence in the U.S., 1998</h2>
+        <hr>
+        
+      </div>
+      <div class="heatmap-text">
+        <p>
+          The heat map indicates that fatal crashes involving drunk drivers are more likely to occur <b>on the weekends</b>, particularly on <b>Saturday</b>. 
+          Additionally, the accidents tend to occur more frequently between<b> 6.30 pm and 4.59 am</b>. 
+          To reduce the likelihood of deadly crash incidents, we must therefore be extremely careful during that time and authorities must check blood alcohol levels more frequently. 
+        </p>
+      </div>
+
+      <div class="heatmap"> 
+        <div id="heatmap"></div>
+      </div>
+
+</div>
+<br>
+<hr>
+<hr>
+<div class="section-6">
+        <div class="pie-chart-title">
+          <h2>Family Violence Incidents in Victoria, Australia, 2014-2015</h2>
+          <hr>
+          
+        </div>
+        <div class="pie-chart-text">
+          <p>
+            Victoria Police identified <b>121,251</b> domestic violence incidents between 2014 and 2015. 
+            More than <b>20%</b> of family violence incidents involved alcohol use, which indicates that out of every five family violence incidents, one involved alcohol use. 
+            According to the chart, incidents where the <b>offender</b> was found to have consumed alcohol are more likely to occur than the others (<b>11.6%</b>).
+          </p>
+        </div>
+
+        <div class="pie-chart"> 
+          <div id="pie"></div>
+        </div>
+
+      </div> 
+</div>
+<br>
+<br>
+<br>
+      <!-- end section 4 -->
+
+  </div>
+
+
+           
+ 
+
+  
+  
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+
+<script type="text/javascript">
+  var specVis1 =  {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/type-alcohol-percentage.csv"},
+  "width": 350, "height": 300,
+  "mark": "area",
+ 
+  "params": [{
+    "name": "type",
+    "select": {"type": "point", "fields": ["Type"],"on":"click"},
+    "bind": "legend"
+  }],
+  
+"transform": [{"calculate": "100*datum.Percentage", "as": "Percentages"}
+          ],
+
+  "encoding": {
+    "x": {
+      "field": "Year", "timeUnit": "year", 
+      "title":"Year",
+      "axis": {"domain": false, "format": "%Y", "tickSize": 0, "grid": false}},
+      
+    "y": {
+      "aggregate": "sum", "field": "Litre",
+      "title":"Alcohol Consumption (%)",
+     "axis": {"grid": false},
+
+      "stack": "normalize"
+
+    },
+    "color": {
+      "field":"Type",
+      "scale": {
+                    "range": [
+                      
+                      "#e0e2db",
+                      "#d2d4c8",
+                      "#b8bdb5"
+                    ]
+                  }
+    },
+    "opacity": {
+      "condition": {"param": "type", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+          {"field": "Type", "type": "nominal"},
+          {"field": "Year", "timeUnit": "year", "title":"Year"},
+          {
+            "field": "Percentages",
+            "type": "quantitative",
+            "format": ",",
+            "title":"Alcohol Consumption (%)"
+          }
+        ]
+  }
+};
+
+  var specVis2 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 350, 
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/alcohol-consumption-per-capita-alcohol-1890.csv"
+  },
+  "transform": [
+    {"filter": "Entity_selection == null || datum.Entity == Entity_selection"},
+    {"filter": "datum.Year"},
+    {"filter": "datum.Entity != 'Switzerland'"},
+    {"filter": "datum.Entity != 'Sweden'"},
+    {"filter": "datum.Entity != 'France'"},
+    {"filter": "datum.Entity != 'Denmark'"},
+    {"filter": "datum.Entity != 'Germany'"},
+    {"filter": "datum.Entity != 'Australia'"},
+    {"filter": "datum.Entity != 'New Zealand'"},
+    {"filter": "datum.Entity != 'Finland'"},
+    {"filter": "datum.Entity != 'Italy'"}
+    
+  ],
+  "params": [
+    {
+      "name": "Entity_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Austria",
+          "Belgium",
+          "Canada",
+          "Japan",
+          "Netherlands",
+          "Norway",
+          "United Kingdom",
+          "United States"
+        ],
+        "labels": [
+          "Show All",
+          "Austria",
+          "Belgium",
+          "Canada",
+          "Japan",
+          "Netherlands",
+          "Norway",
+          "United Kingdom",
+          "United States"
+        ],
+        "name": "Country : "
+      }
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Year", "timeUnit": "year", "title": "Year"},
+    "y": {
+      "field": "Alcohol consumption",
+      "type": "quantitative",
+      "title": "Alcohol consumption (Litre)",
+      "scale": {"domain": [4, 12]}
+    },
+    "color": {
+      "condition": {
+        "param": "hover",
+        "field": "Entity",
+        "type": "nominal",
+        "legend": null
+      },
+      "value": "grey"
+    },
+    "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.2}
+  },
+  "layer": [
+    {
+      "description": "transparent layer to make it easier to trigger selection",
+      "params": [
+        {
+          "name": "hover",
+          "select": {"type": "point", "fields": ["Entity"], "on": "mouseover"}
+        }
+      ],
+      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
+    },
+    {"mark": "line"},
+    {
+      "encoding": {
+        "x": {"aggregate": "max", "field": "Year"},
+        "y": {"aggregate": {"argmax": "Year"}, "field": "Alcohol consumption"}
+      },
+      "layer": [
+        {"mark": {"type": "circle"}},
+        {
+          "mark": {"type": "text", "align": "left", "dx": 4},
+          "encoding": {"text": {"field": "Entity", "type": "nominal"}}
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"field": "Country",
+                  "scale": {
+                    "range": [
+                      
+                      "#e76f51",
+                      "#ee8959",
+                      "#f4a261",
+                      "#e9c46a",
+                      "#8ab17d",
+                      "#2a9d8f",
+                      "#287271",
+                      "#264653"
+                    ]
+                  }},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Italy' || datum['Country'] == 'Yemen' ||  datum['Country'] == 'United States'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Entity", "type": "nominal"},
+          {"field": "Year", "timeUnit": "year", "title":"Year"},
+          {
+            "field": "Alcohol consumption",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+};
+
+var specVis3 = {
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"description": "A simple donut chart with embedded data.",
+"width": 400,
+"height": 250,
+"data": {
+  "values": [
+    {"Alcohol Use": "Perpetrator", "value": 11.6},
+    {"Alcohol Use": "Victim", "value": 1.7},
+    {"Alcohol Use": "Both", "value": 8},
+    {"Alcohol Use": "No one", "value": 78.8}
+  ]
+},
+"mark": {"type": "arc", "innerRadius": 50},
+"encoding": {
+  "theta": {"field": "value", "type": "quantitative"},
+  "color": {
+  "field": "Alcohol Use", 
+  "type": "nominal",
+  "title": "Alcohol Use by",
+  "scale": {"range": ["#b08968", "#ede0d4", "#ddb892", "#7f5539"]}},
+   "tooltip": [
+          {"field": "Alcohol Use", "type": "nominal", "title": "Alcohol Use by"},
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Violence Incidents (%)",
+            "format": ",.2f"
+          }
+        ]
+        
+}
+};
+
+var specVis4 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/Alcohol%20male%20vs%20female.csv"
+  },
+  "transform": [{"calculate": "datum.Population/1000000", "as": "Pop"}
+          ],
+
+  "width": 600,
+  "height": 300,
+
+  "mark": {
+    "type": "circle",
+    "opacity": 0.8,
+    "stroke": "black",
+    "strokeWidth": 0.25
+  },
+  
+  "params": [{
+    "name": "Continent_param",
+    "select": {"type": "point", "fields": ["Continent"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {
+      "field": "Female",
+      "type": "quantitative",
+      "axis": {"title": "Share of Female (%)"}
+    },
+    "y": {
+      "field": "Male", 
+      "type": "quantitative", 
+      "axis": {"title": "Share of Male (%)"}},
+    "size": {
+      "field": "Pop",
+      "type": "quantitative",
+      "title": "Population (M)",
+      "legend": {"clipHeight": 15},
+      "scale": {"rangeMax": 5000}
+    },
+    "color": {"field": "Continent", 
+    "type": "nominal",
+    "scale":{"range": [
+                      
+                      "#797d62",
+                      "#adc178",
+                      "#f1dca7",
+                      "#e8ac65",
+                      "#d08c60",
+                      "#b7b7a4"
+                      
+                    ]}},
+    "opacity": {
+      "condition": {"param": "Continent_param", "value": 1},
+      "value": 0.05
+    },
+    "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "Continent", "type": "nominal", "title": "Continent"},
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "title": "Deaths",
+            "format": ","
+          },
+          {
+            "field": "Male",
+            "type": "quantitative",
+            "title": "Male (%)"
+          },
+          {
+            "field": "Female",
+            "type": "quantitative",
+            "title": "Female (%)"
+          }
+        ]
+
+  }
+};
+
+var specVis5 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data":  {
+  "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/Alcohol%20Traffic%20Fatalities.csv"
+},
+"width": 450,
+"height": 230,
+  "params": [
+    {
+      "name": "highlight",
+      "select": {"type": "point", "on": "mouseover"}
+    },
+    {"name": "select", "select": "point"}
+  ],
+  "mark": {
+    "type": "bar",
+    "stroke": "black",
+    "cursor": "pointer"
+  },
+  "encoding": {
+    "xOffset": {"field": "Category"},
+    "x": {"field": "Year", "type": "nominal"},
+    "y": {"field": "Fatalities", "type": "quantitative", "title": "Crash Fatalities"},
+
+    "color": {
+      "field": "Category",
+      "scale": {"range": ["#6b705c", "#a5a58d"]}},
+    "fillOpacity": {
+      "condition": {"param": "select", "value": 1},
+      "value": 0.3
+    },
+    "tooltip": [
+          {"field": "Year",
+          "type": "nominal",
+          "title": "Year"},
+
+          {"field": "Fatalities",
+          "type": "quantitative",
+          "title": "Num. Crash Fatalities",
+          "format": ","}
+        ],
+    "strokeWidth": {
+      "condition": [
+        {
+          "param": "select",
+          "empty": false,
+          "value": 2
+        },
+        {
+          "param": "highlight",
+          "empty": false,
+          "value": 1
+        }
+      ],
+      "value": 0
+    }
+  }
+  
+};
+
+var specVis6 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 1050,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "transform": [
+        {
+          "calculate": "'No data available in ' + datum.properties.NAME",
+          "as": "no_data"
+        }
+      ],
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white", "strokeWidth": 0.002},
+      "encoding": {"tooltip": {"field": "no_data"}}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "#f2f2f2"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    {
+      "transform": [
+        {
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/alcohol-premature-deaths-rate.csv"
+            },
+            "key": "Entity",
+            "fields": ["Deaths"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "params": [{
+    "name": "country_selected",
+    "select": {"type": "point", "fields": ["properties.NAME"]}
+  }],
+      "encoding": {
+        "color": {
+                  "field": "Deaths",
+                  "type": "quantitative",
+                  "title": "Deaths",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [25, 50, 75],
+                    "range": [
+                      
+                      "#bdbdbd",
+                      "#969696",
+                      "#636363",
+                      "#252525",
+                      "#212529"
+                    ]
+                  }
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {
+            "field": "Deaths",
+            "type": "quantitative",
+            "title": "Num of Deaths",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
+  ]
+};
+
+var specVis7 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+      "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/fatal-acc-drinking-drivers.csv"
+  },
+
+  "width": 400,
+  "height": 200,
+  "params": [{"name": "highlight", "select": "point"}],
+
+  "mark": "rect",
+  "encoding": {
+      "x": {
+          "field": "Day",
+          "type": "nominal",
+          "title": "Day",
+          "sort": null
+      },
+      "y": {
+          "field": "Time",
+          "type": "nominal",
+          "title": "Time",
+          "sort": null
+      },
+      "color": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "legend": {
+              "title": "%"
+          },
+          "scale":{"range": [
+                      
+                      "#f0ead2",
+                      "#e5c38d",
+
+                      "#c98862",
+                      "#b17248"
+                      
+                    ]},
+      },
+      "stroke": {
+      "condition": {
+        "param": "highlight",
+        "empty": false,
+        "value": "black"
+      },
+      "value": null
+    },
+    "opacity": {
+      "condition": {"param": "highlight", "value": 1},
+      "value": 0.5
+    },
+    "order": {"condition": {"param": "highlight", "value": 1}, "value": 0},
+
+       "tooltip": [
+          {"field": "Day",
+          "type": "nominal",
+          "title": "Day"},
+
+          {"field": "Time",
+          "type": "nominal",
+          "title": "Time"},
+
+          {
+            "field": "Percentage",
+          "type": "quantitative",
+          "title": "Percentage (%)"
+          }
+        ]
+  }
+};
+
+var specVis8 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "width": 500,
+          "height": 300,
+          
+          "mark": {"type": "line", "color": "#636363"},
+            "data": {
+    "url": "https://raw.githubusercontent.com/dyan0033/Assignment-W10-Vis-1/main/alcohol-premature-deaths-rate.csv"
+  },
+  
+          "transform": [{"filter": "country_selected == '' || datum.Entity == country_selected"}],
+          "params": [
+    {
+      "name": "country_selected",
+      "bind": {
+        "input": "select",
+        "options":[ 
+          null,
+          "Austria",
+          "Belgium",
+          "Canada",
+          "Japan",
+          "Netherlands",
+          "Norway",
+          "United Kingdom",
+          "United States"
+        ],
+        "labels": [
+          "Select a country",
+          "Austria",
+          "Belgium",
+          "Canada",
+          "Japan",
+          "Netherlands",
+          "Norway",
+          "United Kingdom",
+          "United States"
+        ],
+        "name": "Country: "
+      }
+    }
+  ],
+
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "timeUnit":"year",
+              "axis": {"title": "Year"}
+        },
+            "y": {
+              "field": "Deaths",
+              "type": "quantitative", 
+              "title": "Deaths"},
+
+             "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "Year", "timeUnit": "year", "title": "Year"},
+          {
+            "field": "Deaths",
+            "type": "quantitative",
+            "title": "Deaths",
+            "format": ",.2f"
+          }
+        ]
+          }
+        };
+
+vegaEmbed('#vis1', specVis1, { "actions": false });
+
+vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+vegaEmbed('#pie', specVis3, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+vegaEmbed('#bubble', specVis4, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+vegaEmbed('#bar', specVis5, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+vegaEmbed('#map', specVis6, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+vegaEmbed('#heatmap', specVis7, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+vegaEmbed('#linechart', specVis8, { "actions": false }).then(function (result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+
+</script>
